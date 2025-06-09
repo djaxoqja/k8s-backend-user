@@ -29,7 +29,7 @@ pipeline {
         GIT_URL = "https://github.com/djaxoqja/k8s-backend-user.git"
         GITHUB_CREDENTIAL = "github-token"
         ARTIFACTS = "build/libs/**"
-        DOCKER_REGISTRY = "djaxoqja"
+        DOCKER_REGISTRY = "eomtaebeom"
         DOCKERHUB_CREDENTIAL = 'dockerhub-token'
     }
 
