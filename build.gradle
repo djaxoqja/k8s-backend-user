@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.welab'
-version = '0.0.2'
+version = '0.0.3'
 
 java {
     toolchain {
@@ -23,17 +23,29 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    set('springCloudVersion', "2025.0.0")
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }
+
 jar {
     enabled = false // plain.jar 생성 완전히 비활성화
 }
@@ -43,8 +55,9 @@ tasks.register('getAppName') {
         println "${rootProject.name}"
     }
 }
+
 tasks.register('getAppVersion') {
-	doLast {
-		println "${project.version}"
-}
+    doLast {
+        println "${project.version}"
+    }
 }
