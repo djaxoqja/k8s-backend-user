@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-backend-user-deployment
+spec:
+  replicas: 3  # 원하는 파드 복제본 수 (기본값: 1)
+  selector:
+    matchLabels:
+      app: k8s-backend-user  # 템플릿의 labels와 일치해야 함
+  template:
+    metadata:
+      labels:
+        app: k8s-backend-user  # selector와 일치해야 함
+    spec:
+      containers:
+      - name: k8s-backend-user
+        image: eomtaebeom/k8s-backend-user:0.0.1-SNAPSHOT
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

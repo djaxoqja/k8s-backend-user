@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: k8s-backend-user-rs
+spec:
+  replicas: 2  # 2개의 동일한 파드 유지
+  selector:
+    matchLabels:
+      app: k8s-backend-user  # 관리할 파드 선택 기준
+  template:  # 새 파드 생성 템플릿 (원본 Pod 사양과 동일)
+    metadata:
+      labels:
+        app: k8s-backend-user  # selector와 일치해야 함
+      name: k8s-backend-user  # Pod 이름 (생략 가능, 자동 생성됨)
+    spec:
+      containers:
+      - name: k8s-backend-user
+        image: eomtaebeom/k8s-backend-user:0.0.1-SNAPSHOT
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

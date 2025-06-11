@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: k8s-backend-user
+spec:
+  containers:
+  - name: k8s-backend-user
+    image: eomtaebeom/k8s-backend-user:0.0.1-SNAPSHOT
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 8080
