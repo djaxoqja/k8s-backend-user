@@ -18,7 +18,7 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-        volumeMount:
+        volumeMounts:
         - mountPath: /etc/config
           name: backend-user-config-volume
 
