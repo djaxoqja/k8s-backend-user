@@ -21,6 +21,8 @@ spec:
         volumeMounts:
         - mountPath: /etc/config
           name: backend-user-config-volume
+        - mountPath: /etc/secret
+          name: backend-user-secret-volume
 
       volumes:
         - name: backend-user-config-volume
@@ -29,3 +31,9 @@ spec:
             items:
               - key: application-dev.yml
                 path: application-dev.yml
+        - name: backend-user-secret-volume
+          secret:
+            secretName: backend-user-secret
+            items:
+              - key: application-secret.yml
+                path: application-secret.yml
