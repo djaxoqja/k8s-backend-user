@@ -13,16 +13,16 @@ spec:
         app: k8s-backend-user  # selector와 일치해야 함
     spec:
       containers:
-      - name: k8s-backend-user
-        image: eomtaebeom/k8s-backend-user:0.0.1-SNAPSHOT
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-        volumeMounts:
-        - mountPath: /etc/config
-          name: backend-user-config-volume
-        - mountPath: /etc/secret
-          name: backend-user-secret-volume
+        - name: k8s-backend-user
+          image: eomtaebeom/k8s-backend-user:0.0.1-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+          volumeMounts:
+          - mountPath: /etc/config
+            name: backend-user-config-volume
+          - mountPath: /etc/secret
+            name: backend-user-secret-volume
 
       volumes:
         - name: backend-user-config-volume
