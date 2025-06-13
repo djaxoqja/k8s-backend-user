@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class UserController {
     private final RemoteAlimService remoteAlimService;
-    private final SiteUserService siteUserService;
 
     @GetMapping(value = "/hello")
     public ApiResponseDto<String> hello() {
@@ -25,12 +24,4 @@ public class UserController {
         return ApiResponseDto.createOk(userResponse);
     }
 
-    @PostMapping(value = "/register")
-    public ApiResponseDto<String> register(
-            @RequestBody
-            @Valid
-            SiteUserRegisterDto registerDto) {
-        siteUserService.registerUser(registerDto);
-        return ApiResponseDto.defaultOk();
-    }
 }
