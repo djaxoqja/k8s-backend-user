@@ -37,4 +37,8 @@ public class UserAuthController {
         return ApiResponseDto.createOk(token);
     }
 
+    @GetMapping(value = "/test")
+    public ApiResponseDto<String> test() {
+        return ApiResponseDto.createOk("버전 1입니다.");
+    }
 }
